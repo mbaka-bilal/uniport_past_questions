@@ -12,7 +12,7 @@ class InterstitalAdCubit extends Cubit<InterstitialAd?> {
 
   Future<void> loadInterstitialAd() async {
     InterstitialAd.load(
-        adUnitId: 'ca-app-pub-3940256099942544/1033173712',
+        adUnitId: 'ca-app-pub-3197842556924641/3568041502',
         request: const AdRequest(),
         adLoadCallback: InterstitialAdLoadCallback(onAdLoaded: ((ad) {
           emit(ad);
@@ -21,7 +21,8 @@ class InterstitalAdCubit extends Cubit<InterstitialAd?> {
             ad.dispose();
             emit(null);
           }));
-        }), onAdFailedToLoad: ((ad) {
+        }), onAdFailedToLoad: ((adErr) {
+          print ("failed to load interstitial ad $adErr");
           emit(null);
         })));
   }
@@ -41,7 +42,7 @@ class GoogleAdDisplay extends Cubit<BannerAd?> {
   Future<void> initializeBannerAd() async {
     await BannerAd(
             size: AdSize.banner,
-            adUnitId: "ca-app-pub-3940256099942544/6300978111",
+            adUnitId: "ca-app-pub-3197842556924641/8820368180",
             listener: BannerAdListener(onAdLoaded: (ad) {
               print("successfully loaded ad");
               _bannerAd = ad as BannerAd?;
